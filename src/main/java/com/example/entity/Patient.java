@@ -13,6 +13,14 @@ public class Patient {
     public Patient() {
     }
 
+    public Patient(String cf, String name, String surname, Date birthday, Date registrationDate) {
+        this.cf = cf;
+        this.name = name;
+        this.surname = surname;
+        this.birthday = birthday;
+        this.registrationDate = registrationDate;
+    }
+
     public Patient(Integer id, String cf, String name, String surname, Date birthday, Date registrationDate) {
         this.id = id;
         this.cf = cf;

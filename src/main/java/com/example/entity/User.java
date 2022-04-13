@@ -5,6 +5,7 @@ import com.example.model.Role;
 public class User {
     private Integer id;
     private String name;
+    private String surname;
     private String username;
     private String password;
     private Role role;
@@ -12,9 +13,19 @@ public class User {
     public User() {
     }
 
-    public User(Integer id, String name, String username, String password, Role role) {
+    public User(String name, String surname, String username, String password, Role role) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+
+    public User(Integer id, String name, String surname, String username, String password, Role role) {
         this.id = id;
         this.name = name;
+        this.surname = surname;
         this.username = username;
         this.password = password;
         this.role = role;
@@ -34,6 +45,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getUsername() {
