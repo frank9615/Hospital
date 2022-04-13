@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>Login</h1>
-<form action="<%= request.getContextPath() %>LoginServlet.jsp" method="post">
+<form action="LoginServlet" method="post">
     <table>
         <tr>
             <td>Username:</td>

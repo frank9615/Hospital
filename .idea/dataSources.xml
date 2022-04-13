@@ -2,13 +2,13 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="169f2035-ed5f-441e-823b-76261c4c8216">
-      <driver-ref>mysql</driver-ref>
+      <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>Hibernate
 
 C:/Users/SI2001/IdeaProjects/Hospital/src/main/java/hibernate.cfg.xml</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/mydb</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
