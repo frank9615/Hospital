@@ -1,3 +1,5 @@
+<%@ page import="com.example.entity.User" %>
+<%@ page import="com.example.model.Role" %>
 <%--
   Created by IntelliJ IDEA.
   User: SI2001
@@ -9,6 +11,12 @@
 <html>
 <head>
     <title>Doctor Panel</title>
+    <%
+        User user = (User) session.getAttribute("user");
+        if(user == null || user.getRole() != Role.DOCTOR) {
+            response.sendRedirect("/login.jsp");
+        }
+    %>
 </head>
 <body>
 

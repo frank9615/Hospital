@@ -2,6 +2,8 @@ package com.example.entity;
 
 import com.example.model.Role;
 
+import java.util.List;
+
 public class User {
     private Long id;
     private String name;
@@ -9,6 +11,7 @@ public class User {
     private String username;
     private String password;
     private Role role;
+
 
     public User() {
     }

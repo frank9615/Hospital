@@ -3,7 +3,7 @@ package com.example.entity;
 import java.util.Date;
 
 public class Patient {
-    private Integer id;
+    private Long id;
     private String cf;
     private String name;
     private String surname;
@@ -21,7 +21,7 @@ public class Patient {
         this.registrationDate = registrationDate;
     }
 
-    public Patient(Integer id, String cf, String name, String surname, Date birthday, Date registrationDate) {
+    public Patient(Long id, String cf, String name, String surname, Date birthday, Date registrationDate) {
         this.id = id;
         this.cf = cf;
         this.name = name;
@@ -30,11 +30,11 @@ public class Patient {
         this.registrationDate = registrationDate;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

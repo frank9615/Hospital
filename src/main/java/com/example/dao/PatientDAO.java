@@ -1,30 +1,59 @@
 package com.example.dao;
 
 import com.example.entity.Patient;
-import com.example.entity.User;
-import com.example.model.Role;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import com.example.util.HibernateUtil;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
 public class PatientDAO {
+
     public void addPatient(Patient patient) {
-        try{
-            //1. Configure Hibernate
-            Configuration configuration = new Configuration().configure();
-            //2. Create a session factory
-            SessionFactory sessionFactory = configuration.buildSessionFactory();
-            //3. Create a session
-            Session session = sessionFactory.openSession();
-            //4. Starting a transaction
-            Transaction transaction = session.beginTransaction();
-            session.save(patient);
-            transaction.commit();
-        }catch(HibernateException e){
-            System.out.println(e.getMessage());
-        }
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(patient);
+        tx.commit();
+        session.close();
     }
 
+    public Patient getPatient(int id) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        Patient patient = (Patient) session.get(Patient.class, id);
+        tx.commit();
+        session.close();
+        return patient;
+    }
+
+    public void updatePatient(Patient patient) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        session.update(patient);
+        tx.commit();
+        session.close();
+    }
+
+    public void deletePatient(Patient patient) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        session.delete(patient);
+        tx.commit();
+        session.close();
+    }
+
+    public Patient getPatient(String cf) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "from Patient where cf = :cf";
+        Query query = session.createQuery(hql);
+        query.setParameter("cf", cf);
+        Patient patient = (Patient) query.uniqueResult();
+        tx.commit();
+        session.close();
+        return patient;
+    }
 }
