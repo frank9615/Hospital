@@ -3,12 +3,13 @@ package com.example.dao;
 import com.example.entity.User;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
+import java.util.List;
 
 public class UserDAO {
     public void addUser(User user) {
         try{
             //1. Configure Hibernate
-            Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+            Configuration configuration = new Configuration().configure();
             //2. Create a session factory
             SessionFactory sessionFactory = configuration.buildSessionFactory();
             //3. Create a session
@@ -22,6 +23,7 @@ public class UserDAO {
         }
     }
 
+
     public User getUser(String username, String password) {
         try{
             //1. Configure Hibernate
@@ -32,11 +34,21 @@ public class UserDAO {
             Session session = sessionFactory.openSession();
             //4. Starting a transaction
             Transaction transaction = session.beginTransaction();
-            User user = (User) session.get(User.class, username);
+            String hql = "from User where username = :username and password = :password";
+            Query query = session.createQuery(hql);
+            query.setParameter("username", username);
+            query.setParameter("password", password);
+
+
+
+             User user = (User) query.uniqueResult();
+             System.out.println(user);
+
             transaction.commit();
-            if(user != null && user.getPassword().equals(password)){
-                return user;
-            }
+            session.close();
+            sessionFactory.close();
+            return  user;
+
         }catch(HibernateException e){
             System.out.println(e.getMessage());
         }

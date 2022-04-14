@@ -3,11 +3,19 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.example.entity.User" table="USER">
-        <id column="id" name="id" type="java.lang.Integer" />
+        <id column="id" name="id" type="long">
+            <generator class="native" />
+        </id>
         <property column="name" name="name" type="java.lang.String" />
         <property column="surname" name="surname" type="java.lang.String" />
         <property column="username" name="username" type="java.lang.String"  unique="true"/>
         <property column="password" name="password" type="java.lang.String" />
-        <property column="role" name="role" type="java.lang.String" />
+        <property name="role">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.example.model.Role</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+
     </class>
 </hibernate-mapping>

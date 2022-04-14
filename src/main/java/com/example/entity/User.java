@@ -3,7 +3,7 @@ package com.example.entity;
 import com.example.model.Role;
 
 public class User {
-    private Integer id;
+    private Long id;
     private String name;
     private String surname;
     private String username;
@@ -13,16 +13,7 @@ public class User {
     public User() {
     }
 
-    public User(String name, String surname, String username, String password, Role role) {
-        this.name = name;
-        this.surname = surname;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-
-
-    public User(Integer id, String name, String surname, String username, String password, Role role) {
+    public User(Long id, String name, String surname, String username, String password, Role role) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -31,11 +22,11 @@ public class User {
         this.role = role;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
