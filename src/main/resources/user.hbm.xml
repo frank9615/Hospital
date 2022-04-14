@@ -3,10 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.example.entity.User" table="USER">
-        <id name="id" type="java.lang.Integer">
-            <column name="id" unique="true" />
-            <generator class="increment" />
-        </id>
+        <id column="id" name="id" type="java.lang.Integer" />
         <property column="name" name="name" type="java.lang.String" />
         <property column="surname" name="surname" type="java.lang.String" />
         <property column="username" name="username" type="java.lang.String"  unique="true"/>

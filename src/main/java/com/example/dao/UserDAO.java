@@ -1,7 +1,6 @@
 package com.example.dao;
 
 import com.example.entity.User;
-import com.example.model.Role;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
@@ -9,7 +8,7 @@ public class UserDAO {
     public void addUser(User user) {
         try{
             //1. Configure Hibernate
-            Configuration configuration = new Configuration().configure();
+            Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
             //2. Create a session factory
             SessionFactory sessionFactory = configuration.buildSessionFactory();
             //3. Create a session
