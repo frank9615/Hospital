@@ -5,32 +5,32 @@ import com.example.model.TriageColor;
 import java.util.Date;
 
 public class Triage {
-    private Integer id;
+    private Long id;
     private Integer patientId;
     private TriageColor triageColor;
     private String notes;
     private Date triageDate;
-    private Integer doctorAssignedId;
-    private Integer operatorId;
+    private Doctor doctor;
+    private Operator operator;
 
     public Triage() {
     }
 
-    public Triage(Integer id, Integer patientId, TriageColor triageColor, String notes, Date triageDate, Integer doctorAssignedId, Integer operatorId) {
+    public Triage(Long id, Integer patientId, TriageColor triageColor, String notes, Date triageDate, Doctor doctorAssigned, Operator operator) {
         this.id = id;
         this.patientId = patientId;
         this.triageColor = triageColor;
         this.notes = notes;
         this.triageDate = triageDate;
-        this.doctorAssignedId = doctorAssignedId;
-        this.operatorId = operatorId;
+        this.doctor = doctorAssigned;
+        this.operator = operator;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -66,20 +66,20 @@ public class Triage {
         this.triageDate = triageDate;
     }
 
-    public Integer getDoctorAssignedId() {
-        return doctorAssignedId;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setDoctorAssignedId(Integer doctorAssignedId) {
-        this.doctorAssignedId = doctorAssignedId;
+    public void setDoctor(Doctor doctorAssigned) {
+        this.doctor = doctorAssigned;
     }
 
-    public Integer getOperatorId() {
-        return operatorId;
+    public Operator getOperator() {
+        return operator;
     }
 
-    public void setOperatorId(Integer operatorId) {
-        this.operatorId = operatorId;
+    public void setOperator(Operator operator) {
+        this.operator = operator;
     }
 }
 

@@ -4,7 +4,6 @@ import com.example.entity.User;
 import com.example.model.Role;
 import com.example.util.HibernateUtil;
 import org.hibernate.*;
-import org.hibernate.cfg.Configuration;
 import java.util.List;
 
 public class UserDAO {

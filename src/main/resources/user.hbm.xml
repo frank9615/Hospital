@@ -6,6 +6,7 @@
         <id column="id" name="id" type="long">
             <generator class="native" />
         </id>
+        <discriminator column="USER_TYPE"   type="string" ></discriminator>
         <property column="name" name="name" type="java.lang.String" />
         <property column="surname" name="surname" type="java.lang.String" />
         <property column="username" name="username" type="java.lang.String"  unique="true"/>
@@ -17,5 +18,23 @@
             </type>
         </property>
 
+        <subclass name="com.example.entity.Doctor"  discriminator-value="DOCTOR">
+            <set name="triages" table="TRIAGE" inverse="true" lazy="true" fetch="select">
+                <key>
+                    <column name="doctor_id" not-null="true"/>
+                </key>
+                <one-to-many class="com.example.entity.Triage"  />
+            </set>
+        </subclass>
+
+        <subclass name="com.example.entity.Operator" discriminator-value="OPERATOR">
+            <set name="triages" table="TRIAGE" inverse="true" lazy="true" fetch="select">
+                <key>
+                    <column name="operator_id" not-null="true"/>
+                </key>
+                <one-to-many class="com.example.entity.Triage"  />
+            </set>
+        </subclass>
     </class>
+
 </hibernate-mapping>

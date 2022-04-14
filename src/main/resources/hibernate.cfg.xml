@@ -15,6 +15,7 @@
         <property name="hbm2ddl.auto">update</property>
         <mapping resource="user.hbm.xml" />
         <mapping resource="patient.hbm.xml" />
+        <mapping resource="triage.hbm.xml" />
 
     </session-factory>
 </hibernate-configuration>
