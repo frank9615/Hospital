@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Triage {
     private Long id;
-    private Integer patientId;
+    private Patient patient;
     private TriageColor triageColor;
     private String notes;
     private Date triageDate;
@@ -16,9 +16,9 @@ public class Triage {
     public Triage() {
     }
 
-    public Triage(Long id, Integer patientId, TriageColor triageColor, String notes, Date triageDate, Doctor doctorAssigned, Operator operator) {
+    public Triage(Long id, Patient patient, TriageColor triageColor, String notes, Date triageDate, Doctor doctorAssigned, Operator operator) {
         this.id = id;
-        this.patientId = patientId;
+        this.patient = patient;
         this.triageColor = triageColor;
         this.notes = notes;
         this.triageDate = triageDate;
@@ -34,12 +34,12 @@ public class Triage {
         this.id = id;
     }
 
-    public Integer getPatientId() {
-        return patientId;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPatientId(Integer patientId) {
-        this.patientId = patientId;
+    public void setPatient(Patient patientId) {
+        this.patient = patient;
     }
 
     public TriageColor getTriageColor() {

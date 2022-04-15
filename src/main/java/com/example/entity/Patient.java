@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 public class Patient {
     private Long id;
@@ -9,6 +10,7 @@ public class Patient {
     private String surname;
     private Date birthday;
     private Date registrationDate;
+    private Set<Triage> triages;
 
     public Patient() {
     }
@@ -77,5 +79,14 @@ public class Patient {
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
+
+    public Set<Triage> getTriages() {
+        return triages;
+    }
+
+    public void setTriages(Set<Triage> triages) {
+        this.triages = triages;
+    }
+
 }
 

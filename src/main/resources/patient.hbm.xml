@@ -11,5 +11,11 @@
         <property column="surname" name="surname" type="java.lang.String" />
         <property column="birthday" name="birthday" type="java.util.Date" />
         <property column="registrationDate" name="registrationDate" type="java.util.Date" />
+        <set name="triages" table="TRIAGE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="patient_id" not-null="true"/>
+            </key>
+            <one-to-many class="com.example.entity.Triage"  />
+        </set>
     </class>
 </hibernate-mapping>
