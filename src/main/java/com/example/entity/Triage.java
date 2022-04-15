@@ -16,6 +16,15 @@ public class Triage {
     public Triage() {
     }
 
+    public Triage( Patient patient, TriageColor triageColor, String notes, Date triageDate, Doctor doctorAssigned, Operator operator) {
+        this.patient = patient;
+        this.triageColor = triageColor;
+        this.notes = notes;
+        this.triageDate = triageDate;
+        this.doctor = doctorAssigned;
+        this.operator = operator;
+    }
+
     public Triage(Long id, Patient patient, TriageColor triageColor, String notes, Date triageDate, Doctor doctorAssigned, Operator operator) {
         this.id = id;
         this.patient = patient;
@@ -80,6 +89,19 @@ public class Triage {
 
     public void setOperator(Operator operator) {
         this.operator = operator;
+    }
+
+    @Override
+    public String toString() {
+        return "Triage{" +
+                "id=" + id +
+                ", patient=" + patient +
+                ", triageColor=" + triageColor +
+                ", notes='" + notes + '\'' +
+                ", triageDate=" + triageDate +
+                ", doctor=" + doctor +
+                ", operator=" + operator +
+                '}';
     }
 }
 

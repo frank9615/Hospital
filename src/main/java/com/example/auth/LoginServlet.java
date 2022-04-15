@@ -2,8 +2,6 @@ package com.example.auth;
 
 import com.example.dao.UserDAO;
 import com.example.entity.User;
-import com.example.model.Role;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -23,15 +21,19 @@ public class LoginServlet extends HttpServlet {
             if (user != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
-                if (user.getRole().equals(Role.ADMIN)) {
-                    response.sendRedirect("admin/adminPanel.jsp");
-                } else if (user.getRole().equals(Role.OPERATOR)) {
-                    response.sendRedirect("operator/operatorPanel.jsp");
-                } else if (user.getRole().equals(Role.DOCTOR)) {
-                    response.sendRedirect("doctor/doctorPanel.jsp");
-                } else {
-                    //Role not set
-                    request.getRequestDispatcher("/login.jsp").forward(request, response);
+                switch(user.getRole()) {
+                    case ADMIN:
+                        response.sendRedirect("admin/adminPanel.jsp");
+                        break;
+                    case DOCTOR:
+                        response.sendRedirect("doctor/doctorPanel.jsp");
+                        break;
+                    case OPERATOR:
+                        response.sendRedirect("operator/operatorPanel.jsp");
+                        break;
+                    default:
+                        request.getRequestDispatcher("/login.jsp").forward(request, response);
+                        break;
                 }
             } else {
                 request.getRequestDispatcher("/login.jsp").forward(request, response);

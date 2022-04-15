@@ -1,7 +1,10 @@
 package com.example.hospital;
 
 import com.example.dao.PatientDAO;
-import com.example.entity.Patient;
+import com.example.dao.TriageDAO;
+import com.example.dao.UserDAO;
+import com.example.entity.*;
+import com.example.model.TriageColor;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -32,13 +35,22 @@ public class TriageServlet extends HttpServlet {
             e.printStackTrace();
         }
         PatientDAO patientDAO = new PatientDAO();
-        Patient p = patientDAO.getPatient(cf);
-        if(p == null) {
-            p = new Patient(cf, name, surname, birthDateConverted, now);
-            patientDAO.addPatient(p);
+        Patient patient = patientDAO.getPatient(cf);
+        if(patient == null) {
+            patient = new Patient(cf, name, surname, birthDateConverted, now);
+            patientDAO.addPatient(patient);
         }
-        // Paziente registrato
-        // FAse di triage
+
+        String triageColor = request.getParameter("triageColor");
+        String notes = request.getParameter("notes");
+        String doctorId = request.getParameter("doctor");
+        UserDAO userDAO = new UserDAO();
+        Doctor doctor = (Doctor) userDAO.getUser(Long.parseLong(doctorId));
+        HttpSession session = request.getSession();
+        Operator operator = (Operator) session.getAttribute("user");
+        Triage t = new Triage(patient, TriageColor.valueOf(triageColor), notes, now, doctor, operator);
+        TriageDAO triageDAO = new TriageDAO();
+        triageDAO.addTriage(t);
 
 
 

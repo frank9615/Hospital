@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import com.example.entity.Doctor;
 import com.example.entity.User;
 import com.example.model.Role;
 import com.example.util.HibernateUtil;
@@ -14,6 +15,17 @@ public class UserDAO {
         session.save(user);
         tx.commit();
         session.close();
+    }
+
+    public User getUser(Long id) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+
+        User user = (User) session.get(User.class, id);
+        tx.commit();
+        session.close();
+        return user;
     }
 
 
@@ -45,5 +57,15 @@ public class UserDAO {
         session.close();
         return users;
     }
+
+    public void refresh(Doctor doctor) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        session.merge(doctor);
+        tx.commit();
+        session.close();
+    }
+
 
 }

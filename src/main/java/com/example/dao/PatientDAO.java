@@ -3,7 +3,8 @@ package com.example.dao;
 import com.example.entity.Patient;
 import com.example.util.HibernateUtil;
 import org.hibernate.*;
-import org.hibernate.cfg.Configuration;
+
+import java.util.List;
 
 public class PatientDAO {
 
@@ -55,5 +56,16 @@ public class PatientDAO {
         tx.commit();
         session.close();
         return patient;
+    }
+    public List<Patient> getPatients(){
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "from Patient";
+        Query query = session.createQuery(hql);
+        List<Patient> patients = query.list();
+        tx.commit();
+        session.close();
+        return patients;
     }
 }

@@ -1,13 +1,16 @@
 package com.example.dao;
 
 
+import com.example.entity.Doctor;
+import com.example.entity.Patient;
 import com.example.entity.Triage;
 import com.example.util.HibernateUtil;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+
+import java.util.List;
+
 
 public class TriageDAO {
     public void addTriage(Triage triage) {
@@ -17,6 +20,18 @@ public class TriageDAO {
         session.save(triage);
         tx.commit();
         session.close();
+    }
+
+
+    public List<Triage> getTriageByDoctor(Doctor doctor) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        List<Triage> triageList = session.createQuery("from Triage where doctor = :doctor")
+                .setParameter("doctor", doctor).list();
+        tx.commit();
+        session.close();
+        return triageList;
     }
 
 
