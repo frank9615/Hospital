@@ -35,6 +35,9 @@
                 <one-to-many class="com.example.entity.Triage"  />
             </set>
         </subclass>
+        <subclass name="com.example.entity.Admin" discriminator-value="ADMIN">
+
+        </subclass>
     </class>
 
 </hibernate-mapping>

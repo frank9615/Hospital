@@ -30,7 +30,8 @@
     <table>
         <tr>
             <td>Codice Fiscale:</td>
-            <td><input type="text" name="taxId" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" required="required"></td>
+            <!--pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$"-->
+            <td><input type="text" name="taxId"  required="required"></td>
         </tr>
         <tr>
             <td>Nome:</td>
@@ -67,6 +68,10 @@
                     <% } %>
             </select>
         </td>
+        </tr>
+        <tr>
+            <td>Note :</td>
+            <td><textarea name="note" rows="4" cols="50"></textarea></td>
         </tr>
 
         <tr>

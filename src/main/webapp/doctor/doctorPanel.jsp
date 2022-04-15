@@ -19,17 +19,21 @@
 <head>
     <title>Doctor Panel</title>
     <%
-        Doctor doctor = (Doctor) session.getAttribute("user");
-        if(doctor == null || doctor.getRole() != Role.DOCTOR) {
+        User user = (User) session.getAttribute("user");
+        if(user == null || user.getRole() != Role.DOCTOR) {
             response.sendRedirect("/login.jsp");
         }
+        UserDAO userDAO = new UserDAO();
+        Doctor doctor = userDAO.getDoctor(user.getId());
+        Hibernate.initialize(doctor.getTriages());
 
     %>
 </head>
 <body>
-
+<%= doctor %>
+<%--
     <h1>Doctor Panel</h1>
-    <h2>Welcome <%= doctor.getName() %></h2>
+    <h2>Welcome <%= doctor.getName() %> <%= doctor.getSurname() %></h2>
     <h3>Your ID: <%= doctor.getId() %></h3>
     <a href="/logout.jsp">Logout</a>
 
@@ -60,7 +64,7 @@
             }
         %>
     </table>
-
+--%>
 
 </body>
 </html>
