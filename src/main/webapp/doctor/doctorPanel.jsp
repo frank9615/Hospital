@@ -51,27 +51,20 @@
             for(Triage triageRef : doctor.getTriages()) {
                Triage triage = triageDAO.getTriage(triageRef.getId());
                Patient patient = triage.getPatient();
-
-
         %>
         <tr>
-
             <td><%= patient.getId() %></td>
             <td><%= patient.getName() %></td>
             <td><%= patient.getSurname() %></td>
-
             <td><%= patient.getBirthday() %></td>
-            <td><%= triage.getTriageDate() %></td>
             <td><%= triage.getTriageColor() %></td>
+            <td><%= triage.getTriageDate() %></td>
             <td><%= triage.getNotes() %></td>
-
-
         <tr>
         <%
             }
         %>
     </table>
-
 
 </body>
 </html>
