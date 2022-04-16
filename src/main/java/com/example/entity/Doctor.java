@@ -24,6 +24,6 @@ public class Doctor extends User{
 
         @Override
         public String toString() {
-                return "Doctor{" + "id=" + super.getId() + ", name=" + super.getName() + ", surname=" + super.getSurname() + ", username=" + super.getUsername() + ", password=" + super.getPassword() + ", role=" + super.getRole() + ", triages=" + triages + '}';
+                return "Doctor{" + "id=" + super.getId() + ", name=" + super.getName() + ", surname=" + super.getSurname() + ", username=" + super.getUsername() + ", password=" + super.getPassword() + ", role=" + super.getRole() + '}';
         }
 }

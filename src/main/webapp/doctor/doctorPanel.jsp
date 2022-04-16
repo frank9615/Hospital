@@ -25,13 +25,11 @@
         }
         UserDAO userDAO = new UserDAO();
         Doctor doctor = userDAO.getDoctor(user.getId());
-        Hibernate.initialize(doctor.getTriages());
 
     %>
 </head>
 <body>
-<%= doctor %>
-<%--
+
     <h1>Doctor Panel</h1>
     <h2>Welcome <%= doctor.getName() %> <%= doctor.getSurname() %></h2>
     <h3>Your ID: <%= doctor.getId() %></h3>
@@ -49,22 +47,30 @@
             <th>Note dell'operatore</th>
         </tr>
         <%
+            TriageDAO triageDAO = new TriageDAO();
             for(Triage triage : doctor.getTriages()) {
+               Patient patient = triage.getPatient();
+
+
         %>
         <tr>
-            <td><%= triage.getPatient().getId() %></td>
-            <td><%= triage.getPatient().getName() %></td>
-            <td><%= triage.getPatient().getSurname() %></td>
-            <td><%= triage.getPatient().getBirthday() %></td>
+            <%--
+            <td><%= patient.getId() %></td>
+            <td><%= patient.getName() %></td>
+            <td><%= patient.getSurname() %></td>
+
+            <td><%= patient.getBirthday() %></td>
             <td><%= triage.getTriageDate() %></td>
             <td><%= triage.getTriageColor() %></td>
             <td><%= triage.getNotes() %></td>
+            --%>
+
         <tr>
         <%
             }
         %>
     </table>
---%>
+
 
 </body>
 </html>

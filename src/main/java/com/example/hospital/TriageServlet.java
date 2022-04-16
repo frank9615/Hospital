@@ -42,7 +42,7 @@ public class TriageServlet extends HttpServlet {
         }
 
         String triageColor = request.getParameter("triageColor");
-        String notes = request.getParameter("notes");
+        String notes = request.getParameter("note");
         String doctorId = request.getParameter("doctor");
         UserDAO userDAO = new UserDAO();
         Doctor doctor = (Doctor) userDAO.getUser(Long.parseLong(doctorId));
@@ -51,10 +51,6 @@ public class TriageServlet extends HttpServlet {
         Triage t = new Triage(patient, TriageColor.valueOf(triageColor), notes, now, doctor, operator);
         TriageDAO triageDAO = new TriageDAO();
         triageDAO.addTriage(t);
-
-
-
-
 
     }
 }

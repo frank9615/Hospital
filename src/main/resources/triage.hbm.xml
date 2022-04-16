@@ -24,5 +24,6 @@
             <column name="patient_id" not-null="true" />
         </many-to-one>
 
+
     </class>
 </hibernate-mapping>

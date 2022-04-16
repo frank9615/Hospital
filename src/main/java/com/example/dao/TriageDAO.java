@@ -5,6 +5,7 @@ import com.example.entity.Doctor;
 import com.example.entity.Patient;
 import com.example.entity.Triage;
 import com.example.util.HibernateUtil;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -20,18 +21,6 @@ public class TriageDAO {
         session.save(triage);
         tx.commit();
         session.close();
-    }
-
-
-    public List<Triage> getTriageByDoctor(Doctor doctor) {
-        SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session session = sf.openSession();
-        Transaction tx = session.beginTransaction();
-        List<Triage> triageList = session.createQuery("from Triage where doctor = :doctor")
-                .setParameter("doctor", doctor).list();
-        tx.commit();
-        session.close();
-        return triageList;
     }
 
 

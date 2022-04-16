@@ -6,10 +6,10 @@ import java.util.Date;
 
 public class Triage {
     private Long id;
-    private Patient patient;
     private TriageColor triageColor;
     private String notes;
     private Date triageDate;
+    private Patient patient;
     private Doctor doctor;
     private Operator operator;
 
@@ -47,7 +47,7 @@ public class Triage {
         return patient;
     }
 
-    public void setPatient(Patient patientId) {
+    public void setPatient(Patient patient) {
         this.patient = patient;
     }
 
@@ -79,8 +79,8 @@ public class Triage {
         return doctor;
     }
 
-    public void setDoctor(Doctor doctorAssigned) {
-        this.doctor = doctorAssigned;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     public Operator getOperator() {
@@ -99,8 +99,8 @@ public class Triage {
                 ", triageColor=" + triageColor +
                 ", notes='" + notes + '\'' +
                 ", triageDate=" + triageDate +
-                ", doctor=" + doctor +
-                ", operator=" + operator +
+                ", doctorId=" + doctor +
+                ", operatorId=" + operator +
                 '}';
     }
 }

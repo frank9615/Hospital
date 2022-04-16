@@ -22,4 +22,10 @@ public class Operator extends User {
     public void setTriages(Set<Triage> triages) {
         this.triages = triages;
     }
+
+    @Override
+    public String toString() {
+        return "Operator{" + "id=" + getId() + ", name=" + getName() + ", surname=" + getSurname() + ", username=" + getUsername() + ", password=" + getPassword() + ", role=" + getRole() + '}';
+    }
+
 }
