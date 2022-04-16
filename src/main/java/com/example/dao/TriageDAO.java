@@ -22,6 +22,18 @@ public class TriageDAO {
         tx.commit();
         session.close();
     }
+    public Triage getTriage(Long id) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        Triage triage = (Triage) session.get(Triage.class, id);
+        tx.commit();
+        Hibernate.initialize(triage.getPatient());
+        session.close();
+        return triage;
+    }
+
+
 
 
 }
